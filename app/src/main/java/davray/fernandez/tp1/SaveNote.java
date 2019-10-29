@@ -68,7 +68,7 @@ public class SaveNote extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_save_note, container, false);
-        Button validate_button = view.findViewById(R.id.validate);
+        /*Button validate_button = view.findViewById(R.id.validate);
         validate_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +77,7 @@ public class SaveNote extends Fragment {
                 editor.putString("TEST", "TEST");
                 editor.commit();
             }
-        });
+        });*/
         return view;
     }
 

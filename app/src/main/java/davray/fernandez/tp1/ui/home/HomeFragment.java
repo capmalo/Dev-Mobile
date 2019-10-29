@@ -11,10 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import davray.fernandez.tp1.R;
+import davray.fernandez.tp1.SaveNote;
 
 public class HomeFragment extends Fragment {
 
@@ -32,11 +34,15 @@ public class HomeFragment extends Fragment {
                 //textView.setText(s);
             }
         });
-        Button validate_button = root.findViewById(R.id.validate);
-        validate_button.setOnClickListener(new View.OnClickListener() {
+        Button creernotebtn = root.findViewById(R.id.creernotebtn);
+        creernotebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                SaveNote fragment = new SaveNote();
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.container, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
         return root;
