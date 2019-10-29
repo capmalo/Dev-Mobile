@@ -1,6 +1,5 @@
 package davray.fernandez.tp1.ui.home;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,12 +20,21 @@ import davray.fernandez.tp1.SaveNote;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
+    public boolean isSavedNoteVisible = false;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        final TextView textHome = root.findViewById(R.id.textView2);
+        final TextView textSavedNote = root.findViewById(R.id.textSavedNote);
+        if(isSavedNoteVisible){
+            textSavedNote.setVisibility(View.VISIBLE);
+        }
+        else {
+            textSavedNote.setVisibility(View.INVISIBLE);
+        }
+
+        final TextView textHome = root.findViewById(R.id.textHome);
         final Button createNoteBtn = root.findViewById(R.id.creernotebtn);
 
         homeViewModel.getText().observe(this, new Observer<String>() {
@@ -45,6 +53,7 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.commit();
                 createNoteBtn.setVisibility(View.INVISIBLE);
                 textHome.setVisibility(View.INVISIBLE);
+                textSavedNote.setVisibility(View.INVISIBLE);
             }
         });
         /*public void onBackPressed() {

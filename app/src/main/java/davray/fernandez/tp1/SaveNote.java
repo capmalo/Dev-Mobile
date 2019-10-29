@@ -5,14 +5,20 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.renderscript.ScriptGroup;
+import android.view.InputEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+
+import com.google.android.material.textfield.TextInputEditText;
 
 import davray.fernandez.tp1.ui.home.HomeFragment;
 
@@ -69,19 +75,32 @@ public class SaveNote extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_save_note, container, false);
         final Button validate_button = view.findViewById(R.id.validate);
+
+        final TextView textTitleWarning = view.findViewById(R.id.textTitleWarning);
+        textTitleWarning.setVisibility(View.INVISIBLE);
+
+        final EditText inputTitle = view.findViewById(R.id.inputTitle);
+
         validate_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString("TEST", "TEST");
-                editor.commit();*/
-                Destroy();
+                final String inputT = inputTitle.getText().toString();
+                if(inputT.matches("")){
+                    textTitleWarning.setVisibility(View.VISIBLE);
+                }
+                else {
+                    textTitleWarning.setVisibility(View.INVISIBLE);
+                    /*SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString("TEST", "TEST");
+                    editor.commit();*/
+                    Destroy();
+                }
             }
             void Destroy(){
                 HomeFragment fragment = new HomeFragment();
@@ -89,6 +108,7 @@ public class SaveNote extends Fragment {
                 fragmentTransaction.replace(R.id.container, fragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
+                fragment.isSavedNoteVisible = true;
             }
         });
         return view;
@@ -102,7 +122,7 @@ public class SaveNote extends Fragment {
     }*/
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
