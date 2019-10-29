@@ -11,4 +11,5 @@
     <string name="valider">Valider</string>
     <string name="titre">Titre</string>
     <string name="ajouter_une_note">Ajouter une note</string>
+    <string name="creer_note">Creer note</string>
 </resources>

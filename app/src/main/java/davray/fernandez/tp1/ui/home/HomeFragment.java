@@ -22,20 +22,20 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        //final TextView textView = root.findViewById(R.id.text_home);
+
+        final TextView textHome = root.findViewById(R.id.textView2);
+        final Button createNoteBtn = root.findViewById(R.id.creernotebtn);
+
         homeViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 //textView.setText(s);
             }
         });
-        Button creernotebtn = root.findViewById(R.id.creernotebtn);
-        creernotebtn.setOnClickListener(new View.OnClickListener() {
+        createNoteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SaveNote fragment = new SaveNote();
@@ -43,8 +43,14 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.replace(R.id.container, fragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
+                createNoteBtn.setVisibility(View.INVISIBLE);
+                textHome.setVisibility(View.INVISIBLE);
             }
         });
+        /*public void onBackPressed() {
+            NoteBtn.setVisibility(View.INVISIBLE);
+            textHome.setVisibility(View.INVISIBLE);
+        }*/
         return root;
     }
 }

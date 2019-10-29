@@ -4,12 +4,17 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.renderscript.ScriptGroup;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import davray.fernandez.tp1.ui.home.HomeFragment;
 
 
 /**
@@ -45,7 +50,7 @@ public class SaveNote extends Fragment {
      * @return A new instance of fragment SaveNote.
      */
     // TODO: Rename and change types and number of parameters
-    public static SaveNote newInstance(String param1, String param2) {
+    private static SaveNote newInstance(String param1, String param2) {
         SaveNote fragment = new SaveNote();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -68,25 +73,33 @@ public class SaveNote extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_save_note, container, false);
-        /*Button validate_button = view.findViewById(R.id.validate);
+        final Button validate_button = view.findViewById(R.id.validate);
         validate_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                /*SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("TEST", "TEST");
-                editor.commit();
+                editor.commit();*/
+                Destroy();
             }
-        });*/
+            void Destroy(){
+                HomeFragment fragment = new HomeFragment();
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.container, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
         return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    /*public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
-    }
+    }*/
 
     @Override
     public void onAttach(Context context) {
@@ -103,6 +116,16 @@ public class SaveNote extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        HomeFragment fragment = new HomeFragment();
+        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.container, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     /**
