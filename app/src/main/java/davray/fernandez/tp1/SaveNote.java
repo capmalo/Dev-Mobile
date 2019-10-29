@@ -104,7 +104,7 @@ public class SaveNote extends Fragment {
                     Destroy();
                 }
             }
-            void Destroy(){
+            private void Destroy(){
                 HomeFragment fragment = new HomeFragment();
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.container, fragment);
