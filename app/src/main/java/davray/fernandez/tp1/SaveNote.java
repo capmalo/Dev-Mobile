@@ -86,6 +86,8 @@ public class SaveNote extends Fragment {
 
         final EditText inputTitle = view.findViewById(R.id.inputTitle);
 
+        final EditText inputDescription = view.findViewById(R.id.inputDescription);
+
         validate_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,10 +97,10 @@ public class SaveNote extends Fragment {
                 }
                 else {
                     textTitleWarning.setVisibility(View.INVISIBLE);
-                    /*SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                    SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("TEST", "TEST");
-                    editor.commit();*/
+                    editor.putString(inputT, inputDescription.getText().toString());
+                    editor.commit();
                     Destroy();
                 }
             }
