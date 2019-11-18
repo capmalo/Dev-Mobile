@@ -22,7 +22,11 @@
         android:id="@+id/navigation_dashboard"
         android:name="davray.fernandez.tp1.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_userDetail"
+            app:destination="@id/userDetail" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -34,4 +38,9 @@
         android:name="davray.fernandez.tp1.SaveNote"
         android:label="fragment_save_note"
         tools:layout="@layout/fragment_save_note" />
+    <fragment
+        android:id="@+id/userDetail"
+        android:name="davray.fernandez.tp1.userDetail"
+        android:label="fragment_user_detail"
+        tools:layout="@layout/fragment_user_detail" />
 </navigation>
