@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_saveNote"
             app:destination="@id/saveNote" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_dashboard"
+            app:destination="@id/navigation_dashboard" />
     </fragment>
 
     <fragment

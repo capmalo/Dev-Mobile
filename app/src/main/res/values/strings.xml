@@ -14,4 +14,5 @@
     <string name="creer_note">Creer note</string>
     <string name="veuillez_indiquer_un_titre">Veuillez indiquer un titre</string>
     <string name="nouvelle_note_sauvegard_e">Nouvelle note sauvegardée !</string>
+    <string name="liste_des_utilisateurs">liste des utilisateurs</string>
 </resources>
