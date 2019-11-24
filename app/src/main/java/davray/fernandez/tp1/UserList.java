@@ -10,5 +10,7 @@ public class UserList {
     @Expose
     private List<User> listusers;
 
-
+    public List<User> getListUsers() {
+        return listusers;
+    }
 }

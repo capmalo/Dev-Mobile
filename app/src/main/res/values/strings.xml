@@ -16,4 +16,5 @@
     <string name="nouvelle_note_sauvegard_e">Nouvelle note sauvegardée !</string>
     <string name="liste_des_utilisateurs">liste des utilisateurs</string>
     <string name="user_avatar">user avatar</string>
+    <string name="username">USERNAME HERE</string>
 </resources>
