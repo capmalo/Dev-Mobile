@@ -3,6 +3,8 @@ package davray.fernandez.tp1;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.TreeMap;
+
 public class User {
     @SerializedName("email")
     @Expose
@@ -10,11 +12,11 @@ public class User {
 
     @SerializedName("name")
     @Expose
-    private Object name;
+    private TreeMap name;
 
     @SerializedName("login")
     @Expose
-    private Object login;
+    private TreeMap login;
 
     @SerializedName("username")
     @Expose
@@ -22,13 +24,13 @@ public class User {
 
     @SerializedName("dob")
     @Expose
-    private Object dob;
+    private TreeMap dob;
 
     @SerializedName("picture")
     @Expose
-    private Object picture;
+    private TreeMap picture;
 
-    public User(String email, Object name, Object login, Object dob, Object picture) {
+    public User(String email, TreeMap name, TreeMap login, TreeMap dob, TreeMap picture) {
         this.name = name;
         this.email = email;
         this.login = login;
@@ -40,7 +42,7 @@ public class User {
         return name;
     }
 
-    public void setName(Object name) {
+    public void setName(TreeMap name) {
         this.name = name;
     }
 
@@ -52,27 +54,23 @@ public class User {
         this.email = email;
     }
 
-    public Object getlogin() {
+    public Object getLogin() {
         return login;
     }
 
-    public void setlogin(Object login) {
+    public void setLogin(TreeMap login) {
         this.login = login;
     }
 
-    public void setUsername(String username) {
-        this.username = login.username;
-    }
-
     public String getUsername() {
-        return login.username;
+        return login.get("username").toString();
     }
 
     public Object getDob() {
         return dob;
     }
 
-    public void setDob(Object dob) {
+    public void setDob(TreeMap dob) {
         this.dob = dob;
     }
 
@@ -80,7 +78,7 @@ public class User {
         return picture;
     }
 
-    public void setPicture(Object picture) {
+    public void setPicture(TreeMap picture) {
         this.picture = picture;
     }
 }
