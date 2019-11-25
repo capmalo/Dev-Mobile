@@ -4,6 +4,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface RequestInterface {
-    @GET("/api/")
+    @GET("/api/?results=5")
     Call<UserList> getJSON();
 }

@@ -12,9 +12,13 @@ public class User {
     @Expose
     private Object name;
 
+    @SerializedName("login")
+    @Expose
+    private Object login;
+
     @SerializedName("username")
     @Expose
-    private Object username;
+    private String username;
 
     @SerializedName("dob")
     @Expose
@@ -24,10 +28,10 @@ public class User {
     @Expose
     private Object picture;
 
-    public User(String email, Object name, Object username, Object dob, Object picture) {
+    public User(String email, Object name, Object login, Object dob, Object picture) {
         this.name = name;
         this.email = email;
-        this.username = username;
+        this.login = login;
         this.dob = dob;
         this.picture = picture;
     }
@@ -48,12 +52,20 @@ public class User {
         this.email = email;
     }
 
-    public Object getUsername() {
-        return username;
+    public Object getlogin() {
+        return login;
     }
 
-    public void setUsername(Object username) {
-        this.username = username;
+    public void setlogin(Object login) {
+        this.login = login;
+    }
+
+    public void setUsername(String username) {
+        this.username = login.username;
+    }
+
+    public String getUsername() {
+        return login.username;
     }
 
     public Object getDob() {
