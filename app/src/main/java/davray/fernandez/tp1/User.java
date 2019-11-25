@@ -66,6 +66,10 @@ public class User {
         return login.get("username").toString();
     }
 
+    public String getThumbnail(){
+        return picture.get("thumbnail").toString();
+    }
+
     public Object getDob() {
         return dob;
     }

@@ -17,4 +17,5 @@
     <string name="liste_des_utilisateurs">liste des utilisateurs</string>
     <string name="user_avatar">user avatar</string>
     <string name="username">USERNAME HERE</string>
+    <string name="todo">TODO</string>
 </resources>

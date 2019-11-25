@@ -3,6 +3,7 @@ package davray.fernandez.tp1;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +21,8 @@ public class AdapterUserList extends RecyclerView.Adapter<AdapterUserList.ViewHo
     @Override
     public AdapterUserList.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.container_userlist,parent,false);
-        return new ViewHolder(view);
+        ViewHolder holder =  new ViewHolder(view);
+        return holder;
     }
 
     @Override
@@ -37,12 +39,14 @@ public class AdapterUserList extends RecyclerView.Adapter<AdapterUserList.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView username_list;
         private TextView email_list;
+        private LinearLayout userListLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             username_list = (TextView)itemView.findViewById(R.id.username_list);
             email_list = (TextView)itemView.findViewById(R.id.email_list);
+            userListLayout = (LinearLayout)itemView.findViewById(R.id.userListLayout);
 
         }
     }

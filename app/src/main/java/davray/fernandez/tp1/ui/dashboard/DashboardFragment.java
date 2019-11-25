@@ -1,5 +1,6 @@
 package davray.fernandez.tp1.ui.dashboard;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,6 +35,7 @@ public class DashboardFragment extends Fragment {
     private RecyclerView recyclerView;
     private ArrayList<User> data;
     private AdapterUserList AdapterUserList;
+    private ProgressDialog pdLoading;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -64,6 +66,10 @@ public class DashboardFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
+        pdLoading = new ProgressDialog(getContext());
+        pdLoading.setMessage("\tLoading...");
+        pdLoading.setCancelable(false);
+        pdLoading.show();
         loadJSON();
     }
 
@@ -79,6 +85,7 @@ public class DashboardFragment extends Fragment {
                 data = new ArrayList<>(jsonResponse.getListUsers());
                 AdapterUserList = new AdapterUserList(data);
                 recyclerView.setAdapter(AdapterUserList);
+                pdLoading.cancel();
             }
 
             @Override
